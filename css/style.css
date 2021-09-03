@@ -43,8 +43,6 @@ ul {
 
 header {
   border-top: 10px solid #808080;
-  position: fixed;
-  width: 100%;
 }
 
 header h1 {
@@ -59,87 +57,105 @@ body {
   color: #000;
 }
 
-#nav{
-  position: absolute;
-　top: 0;
-　/*ナビメニューを左に隠した状態になる*/
-  left: -40%;
-  width: 40%;
-  height: 100vh;
-  background: #ffffff;
-　/*０.7秒かけてナビメニューがスライドする*/
-  transition: .7s;
-}
-#nav ul{
-  padding-top: 80px;
-}
-#nav ul li{
-  list-style-type: none;
-  font-size: 20px;
-}
-#nav a{
-  display: block;
+.description a:link,
+.description a:visited {
+  color: darkcyan;
   text-decoration: none;
-  color: #000000;
-  margin: 0 15px;
-  padding: 10px;
-  transition: .5s;
-}
-#nav li a:hover{
-  color: #ffffff;
-  background: #cd5c5c;
-  border-bottom: none;
 }
 
-#hamburger {
+.hamburger {
   display: block;
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  width: 50px;
-  height: 44px;
+  position: fixed;
+  z-index: 3;
+  right: 13px;
+  top: 12px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  transition: 1s;
+  text-align: center;
 }
-
-.inner_line {
+.hamburger span {
   display: block;
   position: absolute;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background-color: #ffffff;
-  transition: 1s;
-  border-radius: 4px;
+  width: 30px;
+  height: 2px;
+  left: 6px;
+  background: #555;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-
-#line1 {
-  top: 0;
+.hamburger span:nth-child(1) {
+  top: 10px;
 }
-#line2 {
+.hamburger span:nth-child(2) {
   top: 20px;
 }
-#line3 {
-  bottom: 0px;
+.hamburger span:nth-child(3) {
+  top: 30px;
 }
-.in{
-  transform: translateX(100%);
-}
-.line_1,.line_2,.line_3{
-  background: #000000;
-}
-.line_1 {
+
+/* ナビ開いてる時のボタン */
+.hamburger.active span:nth-child(1) {
+  top: 16px;
+  left: 6px;
+  background: #fff;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  top: 0;
 }
-.line_2 {
-  opacity: 0;
-}
-.line_3 {
+
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3) {
+  top: 16px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
   transform: rotate(45deg);
-  bottom: 0;
 }
- 
+
+nav.nav {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+nav.nav ul {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+nav.nav ul li {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  transition: 0.4s all;
+}
+nav.nav ul li:last-child {
+  padding-bottom: 0;
+}
+nav.nav ul li:hover {
+  background: #ddd;
+}
+
+nav.nav ul li a {
+  display: block;
+  color: #fff;
+  padding: 1em 0;
+  text-decoration: none;
+}
+
+nav.nav.active {
+  opacity: 100;
+}
 
 .description {
   text-align: center;
